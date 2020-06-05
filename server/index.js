@@ -16,6 +16,7 @@ app.use(session({
 }))
 
 //endpoints
+app.get(`/api/posts/:id`, curd.searchPost)
 app.post(`/api/posts`, curd.createPost);
 app.get(`/api/posts`, curd.getAllPosts);
 app.get(`/api/posts/:id`, curd.getTheirPosts);
