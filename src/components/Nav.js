@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import React from 'react'
+import {withRouter, Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 
-export default class Nav extends Component {
-  render() {
+ function Nav(props) {
+console.log(props)
     return (
       <div>
         <button>
@@ -17,4 +18,9 @@ export default class Nav extends Component {
       </div>
     )
   }
+
+
+function mapStateToProps (state) {
+  return state
 }
+export default withRouter(connect(mapStateToProps)(Nav))
