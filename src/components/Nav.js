@@ -3,9 +3,11 @@ import {withRouter, Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
  function Nav(props) {
+  if (props.location.pathname !== '/') {
 console.log(props)
     return (
       <div>
+        <p>{props.email}</p>
         <button>
           <Link to="/dash">Dashboard</Link>
         </button>
@@ -17,7 +19,10 @@ console.log(props)
         </button>
       </div>
     )
+  } else {
+    return null
   }
+}
 
 
 function mapStateToProps (state) {
