@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import {Link} from 'react-router-dom'
+import { connect } from 'react-redux';
 
 
-export default class Dash extends Component {
+ class Dash extends Component {
   constructor(){
     super()
     this.state = {
@@ -16,16 +17,17 @@ export default class Dash extends Component {
 
   componentDidMount(){
     this.getPosts();
+    console.log(this.state.posts)
   }
 
   getPosts(){
     let {search, myPost} = this.state;
-    axios.get(`/api/posts/${this.state.userId}`)
+    axios.get(`/api/posts/`, this.state.posts)
     .then(res => {
-      setTimeout(_ => this.setState({
+      this.setState({
         posts:res.data,
         loading: false
-      }),200)
+      })
     })
   }
 
@@ -34,9 +36,12 @@ export default class Dash extends Component {
   render() {
     let posts = this.state.posts.map((elem) => {
       return <Link to={`api/posts/${elem.post_id}`} key={elem.post_id}>
-        <h2>{elem.title}</h2>
-        <p>{elem.author_username}</p>
-        <img src={elem.profile_pic} alt='author'/>
+        <div className="each-post">
+        <h2 className="post-content">{elem.title}</h2>
+        <p className="post-content">{elem.user_name}</p>
+        <p className="post-content">{elem.content} </p>
+        <img src={elem.profile_pic} alt='profile-pic'/>
+        </div>
       </Link>
     })
     return (
@@ -45,8 +50,21 @@ export default class Dash extends Component {
         <button>Seach</button>
         <button>Reset</button>
         <input type="checkbox"/>
+
+        <div>
+          <h3 className="posts">{posts} </h3>
+        </div>
+
         the dash
       </div>
     )
   }
 }
+
+function mapStateToProps(state) {
+  return{
+    userId: state.userId
+  }
+}
+
+export default connect(mapStateToProps)(Dash)

@@ -12,7 +12,7 @@ console.log(props)
           <Link to="/dash">Dashboard</Link>
         </button>
         <button>
-          <Link to="/new">New Post</Link>
+          <Link to="/form">New Post</Link>
         </button>
         <button>
           <Link to="/">Logout</Link>
