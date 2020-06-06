@@ -1,5 +1,5 @@
-insert into users (email, password)
+insert into users (user_name, password)
 values ( $1, $2 );
 
 select * from users
-where email = $1;
+where user_name = $1;

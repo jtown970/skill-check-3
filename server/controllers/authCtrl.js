@@ -4,9 +4,9 @@ module.exports = {
 
   register: async (req, res) => {
     const db = req.app.get('db')
-    const {email, password} = req.body
+    const {user_name, password} = req.body
 
-    const existingUser = await db.check_user(email)
+    const existingUser = await db.check_user(user_name)
 
     if(existingUser[0]){
       return res.status(409).send('user already exists')
@@ -15,11 +15,11 @@ module.exports = {
     const salt = bcrypt.genSaltSync(10)
     const hash = bcrypt.hashSync(password, salt)
 
-    const newUser = await db.register_user([email, hash])
+    const newUser = await db.register_user([user_name, hash])
 
     req.session.user = {
       userId: newUser[0].user_id,
-      email: newUser[0].email
+      user_name: newUser[0].user_name
     }
     res.status(200).send(req.session.user)
 
@@ -27,9 +27,9 @@ module.exports = {
   
   login: async (req, res) => {
     const db = req.app.get('db')
-    const {email, password} = req.body
+    const {user_name, password} = req.body
 
-    const user = await db.check_user(email)
+    const user = await db.check_user(user_name)
     if(!user[0]){
       return res.status(404).send('user does not exist yet')
     } else {
@@ -37,11 +37,11 @@ module.exports = {
       if(authenticated){
         req.session.user = {
           userId: user[0].userId,
-          email: user[0].email
+          user_name: user[0].user_name
         }
         res.status(200).send(req.session.user)
       } else {
-        res.status(403).send('Email or password is incorrect')
+        res.status(403).send('user_name or password is incorrect')
       }
     }
   },

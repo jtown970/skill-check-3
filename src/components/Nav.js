@@ -7,7 +7,7 @@ import {connect} from 'react-redux'
 console.log(props)
     return (
       <div>
-        <p>{props.email}</p>
+        <p>{props.user_name}</p>
         <button>
           <Link to="/dash">Dashboard</Link>
         </button>

@@ -10,7 +10,7 @@ class Auth extends Component {
   constructor(props){
     super(props)
     this.state = {
-      email: '',
+      user_name: '',
       password: ''
     }
     this.register = this.register.bind(this)
@@ -24,8 +24,8 @@ class Auth extends Component {
 }
 
   register = (e) => {
-    const {email, password} = this.state
-    axios.post('/auth/register', {email, password})
+    const {user_name, password} = this.state
+    axios.post('/auth/register', {user_name, password})
     .then( res => {
         this.props.updateUser(res.data)
         this.props.history.push('/dashboard')
@@ -37,8 +37,8 @@ class Auth extends Component {
 }
 
   login = (e) => {
-    const {email, password} = this.state
-    axios.post(`/auth/login`, {email, password})
+    const {user_name, password} = this.state
+    axios.post(`/auth/login`, {user_name, password})
     .then(res => {
       this.props.updateUser(res.data)
       this.props.history.push('/dashboard')
@@ -48,14 +48,14 @@ class Auth extends Component {
 
 
   render() {
-    const {email, password} = this.state
+    const {user_name, password} = this.state
     return (
       <div>
         <input
             type="text" 
-            placeholder="email..."
-            name="email"
-            value={email}
+            placeholder="user_name..."
+            name="user_name"
+            value={user_name}
             onChange={e => this.changeHandler(e)}/>
         <input
             type="password"
