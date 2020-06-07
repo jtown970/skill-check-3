@@ -14,6 +14,25 @@ module.exports = {
   },
 
   getTheirPosts: (req, res) => {},
-  updatePost: (req, res) => {},
-  deletePost: (req, res) => {},
+
+  updatePost: (req, res) => {
+    const {post_id} = req.params;
+    const {content} = req.body;
+    const db = req.app.get('db');
+
+    db.edit_post(content)
+    .then(() => res.sendStatus(200))
+    .catch(err => res.status(500).send('err in update post ctrl', err))
+
+  },
+
+  deletePost: (req, res) => {
+    const {id} = req.params
+    const db = req.app.get('db')
+
+    db.delete_post(id)
+    .then(() => res.sendStatus(200))
+    .catch(err => res.status(500).send('err in delete ctrl', err))
+
+  },
 }

@@ -2,7 +2,7 @@
 
 const initialState = {
   user_name: '',
-  id: 0,
+  userId: 0,
   img: ''
 }
 
@@ -39,7 +39,7 @@ export default function reducer (state = initialState, action){
     case LOGIN_USER:
             return {...state, user: action.payload, isLoggedIn: true}
     case UPDATE_USER:
-      return {...state, user_name: action.payload.user_name, img: action.payload.img, id: action.payload.id}
+      return {...state, user_name: action.payload.user_name, img: action.payload.img, userId: action.payload.userId}
     case LOGOUT:
       return initialState
     default:

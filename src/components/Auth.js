@@ -50,22 +50,27 @@ class Auth extends Component {
   render() {
     const {user_name, password} = this.state
     return (
-      <div>
+      <div className='login-page'>
+        <section className='login-form' >
+          <h1 className="title">Helo</h1>
         <input
+            className='login-input'
             type="text" 
             placeholder="user_name..."
             name="user_name"
             value={user_name}
             onChange={e => this.changeHandler(e)}/>
         <input
+            className='login-input'
             type="password"
             placeholder="password..."
             name="password"
             value={password}
             onChange={e => this.changeHandler(e)}/>
 
-        <button type="submit" value="Login" onClick={this.login}>Login</button>
-        <button type="submit" value="Register"  onClick={this.register}>register</button>
+        <button className='btn-login' type="submit" value="Login" onClick={this.login}>Login</button>
+        <button className='btn-login' type="submit" value="Register"  onClick={this.register}>register</button>
+        </section>
       </div>
     )
   }
