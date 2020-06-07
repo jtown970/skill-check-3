@@ -17,7 +17,7 @@ app.use(session({
 
 //endpoints
 app.get(`/api/posts`, curd.getAllPosts)
-app.post(`/api/posts/:users_id`, curd.createPost)
+app.post(`/api/posts/:id`, curd.createPost)
 //auth endpoints
 app.post(`/auth/login`, auth.login)
 app.post(`/auth/register`, auth.register)

@@ -4,7 +4,7 @@ module.exports = {
   createPost: async (req, res) => {
     const { content } = req.body;
     const { users_id } = req.session.user;
-    const newPost = await req.app.get('db').add_post([content, users_id]);
+    const newPost = await req.app.get('db').add_post([content, users_id]); //note something wrong with the users_id says it
     return res.status(200).send(newPost);
   },
   getAllPosts: async(req, res) => {
