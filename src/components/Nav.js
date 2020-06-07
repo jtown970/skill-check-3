@@ -6,17 +6,25 @@ import {connect} from 'react-redux'
   if (props.location.pathname !== '/') {
 console.log(props)
     return (
-      <div>
-        <p>{props.user_name}</p>
-        <button>
-          <Link to="/dash">Dashboard</Link>
-        </button>
-        <button>
-          <Link to="/form">New Post</Link>
-        </button>
-        <button>
-          <Link to="/">Logout</Link>
-        </button>
+      <div className="navigation">
+        <section className="nav-list">
+          <div className="user-namea">
+            <p className="user-name">{props.user_name}</p>
+          </div>
+          <div className="nav-top-btn">
+            <button className="dash-btn">
+              <Link className="dash-btn" to="/dash">Dashboard</Link>
+            </button>
+            <button className="dash-btn">
+              <Link className="dash-btn" to="/form">New Post</Link>
+            </button>
+          </div>
+          <div className="logout-btn">
+            <button className="dash-btn btn-logout">
+              <Link className="dash-btn" to="/">Logout</Link>
+            </button>
+          </div>
+        </section>
       </div>
     )
   } else {
