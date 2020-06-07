@@ -4,6 +4,7 @@ const express = require('express'),
       massive = require('massive'),
       auth = require('./controllers/authCtrl'),
       curd = require('./controllers/crudCrtl'),
+      mid = require('./controllers/midware'),
       {SESSION_SECRET, SERVER_PORT, CONNECTION_STRING} = process.env,
       app = express();
 
@@ -17,12 +18,12 @@ app.use(session({
 
 //endpoints
 app.get(`/api/posts`, curd.getAllPosts)
-app.post(`/api/posts/:id`, curd.createPost)
+app.post(`/api/posts`, curd.createPost)
 app.put(`/api/posts/:id`, curd.updatePost)
 app.delete(`/api/posts/:id`, curd.deletePost)
 //auth endpoints
 app.post(`/auth/login`, auth.login)
-app.post(`/auth/register`, auth.register)
+app.post(`/auth/register`, mid, auth.register)
 app.delete(`/auth/logout`, auth.logout)
 app.get(`/auth/user`, auth.getUser)
 

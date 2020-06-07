@@ -5,6 +5,7 @@ module.exports = {
     const { content } = req.body;
     const { users_id } = req.session.user;
     const newPost = await req.app.get('db').add_post([content, users_id]); //note something wrong with the users_id says it
+
     return res.status(200).send(newPost);
   },
   getAllPosts: async(req, res) => {
@@ -20,7 +21,7 @@ module.exports = {
     const {content} = req.body;
     const db = req.app.get('db');
 
-    db.edit_post(content)
+    db.edit_post(content, post_id)
     .then(() => res.sendStatus(200))
     .catch(err => res.status(500).send('err in update post ctrl', err))
 
