@@ -18,6 +18,7 @@ app.use(session({
 
 //endpoints
 app.get(`/api/posts`, curd.getAllPosts)
+app.get(`/api/posts`, curd.getOnePost)
 app.post(`/api/posts`, curd.createPost)
 app.put(`/api/posts/:id`, curd.updatePost)
 app.delete(`/api/posts/:id`, curd.deletePost)

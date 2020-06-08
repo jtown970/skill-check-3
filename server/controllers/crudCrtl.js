@@ -14,7 +14,11 @@ module.exports = {
 
   },
 
-  getTheirPosts: (req, res) => {},
+  getOnePost: async (req, res) => {
+    const userPost = await req.app.get('db').get_one_post([req.session.posts.post_id])
+    return res.status(200).send(userPost)
+
+  },
 
   updatePost: (req, res) => {
     const {post_id} = req.params;
