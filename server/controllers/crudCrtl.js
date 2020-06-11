@@ -2,11 +2,11 @@ module.exports = {
   searchPost: (req, res) => {},
 
   createPost: async (req, res) => {
-    const { user_id } = req.session;
+    const { userId } = req.session;
     // const { profile_img } = req.body;
     // const { post_id } = req.session;
     const { content } = req.body;
-    const newPost = await req.app.get('db').add_post([user_id, content]); //note something wrong with the users_id says it
+    const newPost = await req.app.get('db').add_post([userId, content]); //note something wrong with the users_id says it
 
     return res.status(200).send(newPost);
   },
@@ -27,9 +27,9 @@ module.exports = {
     const {content} = req.body;
     const db = req.app.get('db');
 
-    db.edit_post(content, post_id)
+    db.edit_post(post_id, content)
     .then(() => res.sendStatus(200))
-    .catch(err => res.status(500).send('err in update post ctrl', err))
+    .catch(err => res.status(500).send(err))
 
   },
 
