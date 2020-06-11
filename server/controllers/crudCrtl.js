@@ -4,7 +4,7 @@ module.exports = {
   createPost: async (req, res) => {
     const { user_id } = req.session.user;
     // const { profile_img } = req.body;
-    // const { post_id } = req.session;
+    // const { post_id } = req.session.user;
     const { content } = req.body;
     const newPost = await req.app.get('db').add_post([user_id, content]); //note something wrong with the users_id says it
 
@@ -22,14 +22,19 @@ module.exports = {
 
   },
 
-  updatePost: (req, res) => {
-    const {post_id} = req.session;
-    const {content} = req.body;
-    const db = req.app.get('db');
+  updatePost: async (req, res) => {
+    const {post_id} = req.params
+    const {content} = req.body
+    const newContent = await req.app.get('db').edit_post([post_id, content]);
+    return res.status(200).send(newContent)
 
-    db.edit_post(post_id, content)
-    .then(() => res.sendStatus(200))
-    .catch(err => res.status(500).send(err))
+    // const {post_id} = req.session.user;
+    // const {content} = req.body;
+    // const db = req.app.get('db');
+
+    // db.edit_post(post_id, content)
+    // .then(() => res.sendStatus(200))
+    // .catch(err => res.status(500).send(err))
 
   },
 
