@@ -2,7 +2,7 @@ module.exports = {
   searchPost: (req, res) => {},
 
   createPost: async (req, res) => {
-    const { user_id } = req.session;
+    const { user_id } = req.session.user;
     // const { profile_img } = req.body;
     // const { post_id } = req.session;
     const { content } = req.body;
@@ -23,7 +23,7 @@ module.exports = {
   },
 
   updatePost: (req, res) => {
-    const {post_id} = req.params;
+    const {post_id} = req.session;
     const {content} = req.body;
     const db = req.app.get('db');
 
