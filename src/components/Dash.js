@@ -38,12 +38,16 @@ import { connect } from 'react-redux';
     let posts = this.state.posts.map((elem) => {
       return <Link to={`api/posts/${elem.post_id}`} key={elem.post_id}>
         <div className="all-posts">
-        <div className="each-post">
-        <h2 className="post-content">{elem.title}</h2>
-        <p className="post-content">{elem.user_name}</p>
-        <p className="post-content">{elem.content} </p>
-        <img className="profile-pic" src={elem.profile_pic} alt='profile-pic'/>
-        </div>
+          <div className="each-post">
+            <h2 className="post-content">{elem.title}</h2>
+            <p className="post-content">{elem.user_name}</p>
+            <p className="post-content">{elem.content} </p>
+            <img className="profile-pic" src={elem.profile_pic} alt='profile-pic'/>
+            <div className="opt-btn">
+              <button className="dash-btn-delete" >delete</button>
+              <button className="dash-btn-edit" >edit</button>
+            </div>
+          </div>
         </div>
       </Link>
     })

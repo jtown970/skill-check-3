@@ -26,7 +26,7 @@ class Form extends Component {
       <div>
         <h2 className='new-post-header'>New Post</h2>
         <div className='new-post-form'>
-          <h3>{this.state.user_name}</h3>
+          <h3>{this.props.user_name}</h3>
           <input placeholder="Title..." className="input-text" value={this.props.title} onChange={e => this.setState({title: e.target.value})}/>
           <textarea className="post-box" placeholder="enter post..." value={this.state.content} onChange={e => this.setState({ content: e.target.value })} />
           <button onClick={() => this.submitPost()} className='btn send-post-btn'>Post</button>

@@ -85,6 +85,26 @@
   font-weight: 600;
 }
 
+.opt-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dash-btn-delete {
+  background-color: red;
+  text-decoration: none;
+  color: black;
+  margin: 1%;
+}
+
+.dash-btn-edit {
+  background-color: forestgreen;
+  text-decoration: none;
+  color: black;
+  margin: 1%;
+}
+
+
 
 /* dashboard */
 .search-bar {
