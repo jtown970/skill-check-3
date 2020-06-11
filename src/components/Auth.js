@@ -31,7 +31,6 @@ class Auth extends Component {
         this.props.history.push('/dashboard')
     })
     .catch(err => {
-        // console.log(err.response.data)
         alert(err => {alert('could not register')})
     })
 }

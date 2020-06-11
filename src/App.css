@@ -60,8 +60,6 @@
   width: 10vw;
   display: flex;
   position: fixed;
-  /* justify-content: flex-start; */
-  /* align-items: center; */
 }
 
 .user-name {
@@ -127,3 +125,36 @@
   text-decoration: none;
   color: black;
 }
+
+/* add post page */
+
+.new-post-header {
+  font-size: 2rem;
+  color:  black;
+  font-weight: 500;
+  padding: 5%;
+}
+
+.new-post-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+} 
+
+.input-text {
+  margin-bottom: 2%;
+
+} 
+
+.post-box {
+  margin-bottom:  2%;
+}
+
+.send-post-btn {
+  width: 25%;
+  margin: auto;
+  padding: 1%;
+  box-sizing: border-box;
+}
+
