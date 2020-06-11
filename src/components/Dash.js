@@ -65,7 +65,7 @@ import { connect } from 'react-redux';
 
 function mapStateToProps(state) {
   return{
-    userId: state.userId
+    user_id: state.user_id
   }
 }
 

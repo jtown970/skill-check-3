@@ -2,11 +2,11 @@ module.exports = {
   searchPost: (req, res) => {},
 
   createPost: async (req, res) => {
-    const { userId } = req.session;
+    const { user_id } = req.session;
     // const { profile_img } = req.body;
     // const { post_id } = req.session;
     const { content } = req.body;
-    const newPost = await req.app.get('db').add_post([userId, content]); //note something wrong with the users_id says it
+    const newPost = await req.app.get('db').add_post([user_id, content]); //note something wrong with the users_id says it
 
     return res.status(200).send(newPost);
   },

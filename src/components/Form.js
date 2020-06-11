@@ -14,7 +14,7 @@ class Form extends Component {
   }
 
   submitPost(){
-    axios.post(`api/posts/${this.props.userId}`, this.state)
+    axios.post(`api/posts/${this.props.user_id}`, this.state)
     .then(res => {
       this.props.history.push('/dashboard')
     })
@@ -37,7 +37,7 @@ class Form extends Component {
 }
 
 function mapStateToProps(state){
-  return {userId: state.userId}
+  return {user_id: state.user_id}
     
   
 }

@@ -18,7 +18,7 @@ module.exports = {
     const newUser = await db.register_user([user_name, hash])
 
     req.session.user = {
-        userId: newUser[0].userId,
+        user_id: newUser[0].user_id,
         user_name: newUser[0].user_name
     }
 
@@ -36,7 +36,7 @@ module.exports = {
       const authenticated = bcrypt.compareSync(password, user[0].password)
       if(authenticated){
         req.session.user = {
-          userId: user[0].userId,
+          user_id: user[0].user_id,
           user_name: user[0].user_name
         }
         res.status(200).send(req.session.user)
